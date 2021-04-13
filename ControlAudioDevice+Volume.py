@@ -79,9 +79,9 @@ while True:
         if decoded_int <=1100:            
             percentValue = decoded_int - 1000
             difference = oldPotiValue - percentValue
-            # only change if difference between old and new value is more than two
+            # only change if difference between old and new value is more than one
             # since poti values slightly fluctuate
-            if difference <= -1 or difference >= 1:
+            if difference < -1 or difference > 1:
                 oldPotiValue = percentValue
                 scaledValue = translateValues(percentValue, 0, 100, 0, 65555) # scale to 0-65555
                 subprocess.run("nircmd.exe setsysvolume " + str(scaledValue))
